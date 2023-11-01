@@ -10,6 +10,7 @@ import * as bcrypt from 'bcrypt';
 import usersModel from './models/users.model';
 import { signinAuthDto } from './dto/signin-auth.dto';
 import * as jwt from 'jsonwebtoken';
+import message from 'src/utils/messages';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +30,7 @@ export class AuthService {
       return {
         status: true,
         user,
-        message: 'User signed up successfully',
+        message: message.USER_SIGNEDUP_SUCCESS,
       };
     } catch (error) {
       this.logger.error(error, '<<-- Error in signup');

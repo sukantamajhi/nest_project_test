@@ -20,4 +20,6 @@ export class CreateAuthDto {
   @IsString()
   @IsStrongPassword()
   readonly password: string;
+
+  readonly test: number;
 }

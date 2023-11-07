@@ -6,7 +6,10 @@ import connectToDb from './database';
 
 async function main() {
   const logger = new Logger(main.name);
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    // logger:["error", "fatal"]
+    snapshot: true,
+  });
   app.useGlobalPipes(new ValidationPipe());
 
   connectToDb();
@@ -16,6 +19,7 @@ async function main() {
     .setVersion('1.0')
     .addBearerAuth()
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 

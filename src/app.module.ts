@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
-import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './api/auth/auth.module';
+import { UsersModule } from './api/users/users.module';
 
 @Module({
   imports: [
@@ -8,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    UsersModule,
   ],
 })
 export class AppModule {}
